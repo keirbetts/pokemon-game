@@ -5,7 +5,14 @@ class Pokemoncard extends React.Component {
     guess: ""
   };
 
-  handleSubmit = () => {};
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const playerGuess = this.state.guess;
+
+    this.props.checkGuess(playerGuess);
+  };
+
   handleChange = changeEvent => {
     let userGuess = changeEvent.target.value;
     this.setState(
@@ -19,13 +26,21 @@ class Pokemoncard extends React.Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Guess:{" "}
-          <input type="text" name="pokemon" onChange={this.handleChange} />
-        </label>
-        <button>Guess!</button>
-      </form>
+      <section>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Guess:{" "}
+            <input type="text" name="pokemon" onChange={this.handleChange} />
+          </label>
+          <button>Guess!</button>
+        </form>
+        {/* {console.log(this.props.randomPokemon)} */}
+        <img
+          id="pokemon"
+          src={this.props.randomPokemon.img}
+          alt={this.props.name}
+        />
+      </section>
     );
   }
 }
