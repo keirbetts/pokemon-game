@@ -1,10 +1,25 @@
+@font-face {
+  font-family: "Pokemon";
+  src: local("Pokemon"), url("./fonts/Pokemon Solid.ttf") format("truetype");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: Pokemon, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    179.57deg,
+    #f82713 41.66%,
+    rgba(248, 74, 19, 0.7) 98.9%
+  );
+
+  min-height: 100vh;
+  color: rgb(233, 189, 49);
+  text-shadow: -2px 0 rgb(54, 96, 158), 0 2px rgb(54, 96, 158),
+    2px 0 rgb(54, 96, 158), 0 -2px rgb(54, 96, 158);
 }
 
 code {
@@ -12,8 +27,66 @@ code {
     monospace;
 }
 
+/* pokemon main container */
+.pokemon-main-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  max-height: 100vh;
+}
+
+/* Pokemon card */
+/* pokemon-img-container */
+.pokemon-img-container {
+  grid-area: 1/1/4/4;
+  background-image: url("./images/star.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 950px;
+  height: 100%;
+  text-align: center;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  padding-right: 90px;
+}
+
+.pokemon-img-container img {
+  width: 450px;
+  padding-left: 90px;
+  padding-top: 90px;
+}
+
+/* incorrect answer */
+
+.incorrect-answer-container {
+  grid-area: 3/4/4/6;
+  text-align: left;
+}
+
+.incorrect-answer img {
+  width: 450px;
+}
+
 #pokemon-incorrect {
   filter: invert(50%);
+}
+
+/* correct answer */
+
+.correct-answer {
+  grid-area: 2/4/5/6;
+  text-align: center;
+}
+
+.correct-answer img {
+  height: 600px;
+}
+
+.correct-pokemon-title {
+  font-size: 4em;
+  letter-spacing: 0.2em;
 }
 
 #pokemon-correct {
