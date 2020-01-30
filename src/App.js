@@ -11,7 +11,8 @@ class App extends React.Component {
     // Assign state itself, and a default value for items
     this.state = {
       pokemon: [],
-      randPokemon: {}
+      randPokemon: {},
+      answer: false
     };
   }
 
@@ -63,7 +64,17 @@ class App extends React.Component {
   }
 
   checkGuess(playerGuess) {
-    console.log(this.state);
+    if (playerGuess === this.state.randPokemon.name) {
+      this.setState(
+        currentState => {
+          console.log(currentState, "CURRENT");
+          return { answer: !currentState.answer };
+        },
+        () => {
+          console.log(this.state, "POST ANSWER");
+        }
+      );
+    }
   }
 
   render() {
@@ -73,6 +84,7 @@ class App extends React.Component {
         <Pokemoncard
           randomPokemon={this.state.randPokemon}
           checkGuess={this.checkGuess.bind(this)}
+          answer={this.state.answer}
         />
       </div>
     );
