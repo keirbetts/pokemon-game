@@ -91,3 +91,28 @@ code {
 
 #pokemon-correct {
 }
+
+/*game reset section */
+
+.reset-section {
+  text-align: center;
+  grid-area: 1/4/2/5;
+}
+
+/* title section */
+
+.main-nav {
+  display: block;
+  margin-top: 20px;
+  font-size: 3em;
+  letter-spacing: 0.1em;
+}
+
+.main-nav img {
+  width: 70px;
+  margin-left: 10px;
+}
+
+#pokeball-greyed {
+  filter: invert(50%);
+}

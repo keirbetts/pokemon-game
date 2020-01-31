@@ -1,4 +1,5 @@
 import React from "react";
+import Outcome from "./Outcome";
 
 class Pokemoncard extends React.Component {
   state = {
@@ -9,7 +10,7 @@ class Pokemoncard extends React.Component {
     event.preventDefault();
 
     const playerGuess = this.state.guess;
-    this.props.checkGuess(playerGuess);
+    this.props.checkGuess(playerGuess, event);
   };
 
   handleChange = changeEvent => {
@@ -19,7 +20,7 @@ class Pokemoncard extends React.Component {
         return { guess: userGuess };
       },
       () => {
-        console.log(this.state);
+        // console.log(this.state);
       }
     );
   };
@@ -46,24 +47,12 @@ class Pokemoncard extends React.Component {
             alt={this.props.name}
           />
         </div>
-        {this.props.answer === true ? (
-          <div className="correct-answer">
-            <header className="correct-pokemon-title">
-              {this.props.randomPokemon.name.toUpperCase()}
-            </header>
-            <img
-              src="https://www.freepngimg.com/thumb/pokemon/37717-4-pokemon-ash-image.png"
-              alt="happy-ash"
-            />
-          </div>
-        ) : (
-          <div className="incorrect-answer-container">
-            <img
-              src="https://camo.githubusercontent.com/8dd9439d771cb25409831294fc728ac61c499b72/68747470733a2f2f692e696d6775722e636f6d2f583962314b75362e706e67"
-              alt="who's that pokemon"
-            />
-          </div>
-        )}
+        {console.log(this.props.answer, "FROM CARDS")}
+        <Outcome
+          answer={this.props.answer}
+          randomPokemon={this.props.randomPokemon}
+          resetGame={this.props.resetGame}
+        />
       </section>
     );
   }

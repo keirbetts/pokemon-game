@@ -5,18 +5,15 @@ import Title from "./components/Title";
 import Pokemoncard from "./components/Pokemoncards";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // Assign state itself, and a default value for items
-    this.state = {
-      pokemon: [],
-      randPokemon: {},
-      answer: false
-    };
-  }
+  state = {
+    pokemon: [],
+    randPokemon: {},
+    answer: false,
+    guesses: 3
+  };
 
   componentDidMount() {
+    console.log("mounting");
     fetch("https://pokeapi.co/api/v2/pokemon?limit=150", {
       headers: { "Content-Type": "application/json" }
     })
@@ -54,7 +51,7 @@ class App extends React.Component {
 
         this.setState(
           () => {
-            return { currentState: setPokemon, randPokemon: setRandomPokemon };
+            return { pokemon: setPokemon, randPokemon: setRandomPokemon };
           },
           () => {
             console.log(this.state, "CURRENT STATE");
@@ -63,28 +60,44 @@ class App extends React.Component {
       });
   }
 
-  checkGuess(playerGuess) {
+  checkGuess = playerGuess => {
     if (playerGuess === this.state.randPokemon.name) {
       this.setState(
         currentState => {
-          console.log(currentState, "CURRENT");
-          return { answer: !currentState.answer };
+          // console.log(currentState, "CURRENT");
+          return {
+            answer: !currentState.answer
+          };
         },
         () => {
-          console.log(this.state, "POST ANSWER");
+          console.log(this.state.guesses, "POST ANSWER");
         }
       );
+    } else {
+      this.setState(currentState => {
+        return { guesses: currentState.guesses - 1 };
+      });
     }
-  }
+  };
+
+  resetGame = () => {
+    this.setState(currentState => {
+      return {
+        ...currentState,
+        randomPokemon: currentState.pokemon[Math.floor(Math.random() * 150) + 1]
+      };
+    });
+  };
 
   render() {
     return (
       <div>
-        <Title />
+        <Title guesses={this.state.guesses} />
         <Pokemoncard
           randomPokemon={this.state.randPokemon}
-          checkGuess={this.checkGuess.bind(this)}
+          checkGuess={this.checkGuess}
           answer={this.state.answer}
+          resetGame={this.resetGame}
         />
       </div>
     );
