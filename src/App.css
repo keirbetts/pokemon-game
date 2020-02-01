@@ -1,38 +1,89 @@
-.App {
+/* pokemon main container */
+.pokemon-main-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  max-height: 100vh;
+}
+
+/* Pokemon card */
+/* pokemon-img-container */
+.pokemon-img-container {
+  grid-area: 1/1/4/4;
+  background-image: url("./images/star.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 950px;
+  height: 100%;
+  text-align: center;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  padding-right: 90px;
+}
+
+.pokemon-img-container img {
+  width: 450px;
+  padding-left: 90px;
+  padding-top: 90px;
+}
+
+/* incorrect answer */
+
+.incorrect-answer-container {
+  grid-area: 3/4/4/6;
+  text-align: left;
+}
+
+.incorrect-answer img {
+  width: 450px;
+}
+
+#pokemon-incorrect {
+  filter: invert(50%);
+}
+
+/* correct answer */
+
+.correct-answer {
+  grid-area: 2/4/5/6;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.correct-answer img {
+  height: 600px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.correct-pokemon-title {
+  font-size: 4em;
+  letter-spacing: 0.2em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#pokemon-correct {
 }
 
-.App-link {
-  color: #61dafb;
+/*game reset section */
+
+.reset-section {
+  text-align: center;
+  grid-area: 1/4/2/5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* title section */
+
+.main-nav {
+  display: block;
+  margin-top: 20px;
+  font-size: 3em;
+  letter-spacing: 0.1em;
+}
+
+.main-nav img {
+  width: 70px;
+  margin-left: 10px;
+}
+
+#pokeball-greyed {
+  filter: invert(50%);
 }
