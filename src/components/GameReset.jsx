@@ -1,9 +1,11 @@
 import React from "react";
+import reset from "../images/reset-icon.png";
 
 const ResetGame = props => {
   const handleOnSubmit = event => {
     // event.preventDefault();
     props.resetGame();
+    props.setMusic();
     // this triggers a new pokemon to be selected
     // reset lose messages and lives back to 0
   };
@@ -11,9 +13,9 @@ const ResetGame = props => {
   return (
     <section onSubmit={handleOnSubmit} className="reset-section">
       <form className="reset-form">
-        <label>{props.answer === true ? "Play Again" : "Reset"}</label>
+        <p>{props.answer === true ? "Play Again?" : "Reset"}</p>
         <button className="reset-btn">
-          {props.answer === true ? "Play Again" : "Reset"}
+          <img src={reset} alt="reset-button" />
         </button>
       </form>
     </section>

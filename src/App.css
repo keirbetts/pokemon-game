@@ -2,16 +2,20 @@
 .pokemon-main-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: 100px 1fr 1fr 1fr 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   max-height: 100vh;
 }
 
+.pokemon-main-container header {
+  grid-area: 1/1/2/4;
+}
+
 /* Pokemon card */
 /* pokemon-img-container */
 .pokemon-img-container {
-  grid-area: 1/1/4/4;
+  grid-area: 2/1/5/4;
   background-image: url("./images/star.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -20,23 +24,28 @@
   text-align: center;
   padding-top: 90px;
   padding-bottom: 90px;
-  padding-right: 90px;
+  padding-right: 200px;
 }
 
 .pokemon-img-container img {
   width: 450px;
-  padding-left: 90px;
+  padding-left: 130px;
   padding-top: 90px;
 }
 
 /* incorrect answer */
 
 .incorrect-answer-container {
-  grid-area: 3/4/4/6;
+  grid-area: 1/4/5/6;
   text-align: left;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100px 1fr 1fr 1fr 1fr;
+  grid-row-gap: 5px;
 }
 
-.incorrect-answer img {
+.whos-that-pokemon {
+  grid-row-start: 5;
   width: 450px;
 }
 
@@ -47,34 +56,85 @@
 /* correct answer */
 
 .correct-answer {
-  grid-area: 2/4/5/6;
+  grid-area: 2/4/6/6;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 40px 1fr 1fr 1fr 1fr;
+  grid-row-gap: 5px;
   text-align: center;
 }
 
 .correct-answer img {
-  height: 600px;
+  grid-row-start: 4;
+  height: 550px;
 }
 
 .correct-pokemon-title {
-  font-size: 4em;
+  grid-row: 2;
+  font-size: 3.5em;
   letter-spacing: 0.2em;
 }
 
 #pokemon-correct {
 }
 
+/* LOSE GAME */
+
+.game-lose .reset-form {
+  font-size: 0.3em !important;
+  letter-spacing: 0.2em;
+  margin-right: 280px;
+}
+
+.game-lose p {
+  font-size: 1em;
+}
+
 /*game reset section */
 
 .reset-section {
   text-align: center;
-  grid-area: 1/4/2/5;
+  grid-area: 3/1/4/2;
+  margin-bottom: 25px;
+  font-size: 2em;
+  letter-spacing: 0.2em;
+}
+
+.reset-form p {
+  margin-bottom: 10px;
+}
+
+.reset-btn img {
+  height: 30px;
+}
+
+.reset-btn {
+  box-shadow: 0px 1px 0px 0px #fff6af;
+  background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+  background-color: #ffec64;
+  border-radius: 6px;
+  border: 1px solid #ffaa22;
+  display: inline-block;
+  cursor: pointer;
+  color: #333333;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffee66;
+}
+
+.reset-btn :active {
+  position: relative;
+  top: 1px;
 }
 
 /* title section */
-
 .main-nav {
   display: block;
   margin-top: 20px;
+  margin-left: 20px;
   font-size: 3em;
   letter-spacing: 0.1em;
 }
@@ -86,4 +146,132 @@
 
 #pokeball-greyed {
   filter: invert(50%);
+}
+
+/* GAME LOSE */
+
+.game-lose {
+  font-size: 4em;
+  letter-spacing: 0.1em;
+  grid-area: 2/4/3/6;
+}
+
+.game-lose p {
+  font-size: 1em;
+}
+
+.sad-pika-img {
+  padding-top: 0px;
+}
+
+/* Form styling - guess */
+
+.guess-form {
+  grid-area: 1/4/2/6;
+  text-align: left;
+  padding-top: 70px;
+}
+
+.guess-form label {
+  font-size: 1.5em;
+  letter-spacing: 0.2em;
+}
+
+input[type="text"] {
+  border: 2px solid black;
+  border-radius: 4px;
+  height: 25px;
+  font-size: 1em;
+  width: 200px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.guess-btn img {
+  height: 23px;
+}
+
+.guess-btn {
+  box-shadow: 0px 1px 0px 0px #fff6af;
+  background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+  background-color: #ffec64;
+  border-radius: 6px;
+  border: 1px solid #ffaa22;
+  display: inline-block;
+  cursor: pointer;
+  color: #333333;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px 5px 5px 5px;
+  /* padding-top: 5px;
+  padding-bottom: 1px;
+  margin-bottom: 0px; */
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffee66;
+}
+
+.guess-btn :active {
+  position: relative;
+  top: 1px;
+}
+
+/* POKEMON PAGE DETAIL PAGE */
+
+.pokemon-detail-section {
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 0.2fr 1fr;
+}
+
+.pokemon-detail-section header {
+  grid-column: 2/5;
+  text-align: center;
+}
+
+.pokemon-detail-section h1 {
+  font-size: 4.5em;
+  letter-spacing: 0.2em;
+  margin-bottom: 0;
+  margin-top: 50px;
+}
+
+.pokemon-detail-img-container {
+  grid-area: 3/2/4/5;
+  text-align: center;
+}
+
+/* POKEMON DETAIL STATS SECTION  */
+.pokemon-description-section {
+  grid-column: 2/5;
+  text-align: center;
+
+  font-size: 2em;
+  letter-spacing: 0.2em;
+}
+
+.type-list-container {
+  grid-area: 3/2/4/3;
+  letter-spacing: 0.2em;
+  font-size: 1.5em;
+}
+
+.type-list-container h1 {
+  font-size: 1em;
+  margin: 0;
+}
+
+.abilities-list-container {
+  grid-area: 3/4/4/5;
+  font-size: 1.5em;
+  letter-spacing: 0.2em;
+  padding-left: 100px;
+}
+
+.abilities-list-container h1 {
+  font-size: 1em;
 }

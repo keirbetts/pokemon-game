@@ -4,10 +4,10 @@ import ball from "../images/ball.png";
 const Title = props => {
   return (
     <nav className="main-nav">
-      Pokémon life count:
+      Lives:
       {console.log(props.guesses)}
       <img
-        id={props.guesses === 0 ? "pokeball-greyed" : "pokeball1"}
+        id={props.guesses <= 0 ? "pokeball-greyed" : "pokeball1"}
         src={ball}
         alt="pokeball"
       />
